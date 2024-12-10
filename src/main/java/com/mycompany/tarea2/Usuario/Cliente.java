@@ -13,7 +13,10 @@ public class Cliente extends Usuario{
     private int ranking;
     
     public Reporte reportar(String queja){
-        return null;
+        Reporte r = new Reporte();
+        r.setQueja((queja));
+
+        return r;
     }
     public void  actualizarPuntos(){
         

@@ -9,5 +9,13 @@ package com.mycompany.tarea01ds.Usuario;
  * @author cesar
  */
 class Reporte {
-    
+    private String queja;
+
+    public String getQueja() {
+        return this.queja;
+    }
+
+    public void setQueja(String s) {
+        this.queja = s;
+    }
 }
