@@ -4,7 +4,7 @@
  */
 package com.mycompany.tarea2.pronosticoFactory;
 
-import com.mycompany.tarea01ds.Usuario.Cliente;
+import com.mycompany.tarea2.Usuario.Cliente;
 
 /**
  *
