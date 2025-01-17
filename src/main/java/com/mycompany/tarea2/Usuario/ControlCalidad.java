@@ -10,24 +10,20 @@ package com.mycompany.tarea2.Usuario;
  */
 public class ControlCalidad extends Usuario implements IControlIncidente{
 
-    public ControlCalidad(String nombre, String correo, int cedula) {
+    public ControlCalidad(String nombre, String correo, String cedula) {
         super(nombre, correo, cedula);
     }
 
-    @Override
-    public void gestionarReporte() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     public void gestionarReporte(Reporte reporte) {
+        System.out.println("Gestionando reporte: " + reporte.getStringReporte());
+    }
+
+    public void ajustarPuntuacion(Usuario usuario, int puntos) {
+        System.out.println("Ajustando puntuación para usuario: " + usuario.nombre);
     }
 
     @Override
     public void escalarReporte() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    public void revisarIncidentes(Incidente indicente){
-        
-    }
-    public void ajustarPuntuacion(Usuario usuario, int puntos ){
-        
+        System.out.println("Escalando reporte a un nivel superior...");
     }
 }

@@ -10,18 +10,17 @@ package com.mycompany.tarea2.Usuario;
  */
 public class Admin extends Usuario implements IGestionarReglas{
 
-    public Admin(String nombre, String correo, int cedula) {
+    public Admin(String nombre, String correo, String cedula) {
         super(nombre, correo, cedula);
     }
 
-    @Override
+     @Override
     public void configurarOpcionesPronostico() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Configurando opciones de pronóstico...");
     }
 
     @Override
     public void gestionarReglasPuntuacion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Gestionando reglas de puntuación...");
     }
-    
 }

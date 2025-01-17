@@ -8,14 +8,19 @@ package com.mycompany.tarea2.Usuario;
  *
  * @author cesar
  */
-class Reporte {
-   private String reporte;
+class Puntos {
+    double moneda;
 
-    public String getStringReporte() {
-        return reporte;
+    public double getMoneda() {
+        return moneda;
     }
 
-    public void setStringReporte(String reporte) {
-        this.reporte = reporte;
+    public void setMoneda(double moneda) {
+        this.moneda = moneda;
     }
+
+    public void mostrarPuntos() {
+        System.out.println("Puntos disponibles: " + moneda);
+    }
+    
 }

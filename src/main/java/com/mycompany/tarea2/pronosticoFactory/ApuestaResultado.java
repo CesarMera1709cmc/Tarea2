@@ -5,20 +5,23 @@
 package com.mycompany.tarea2.pronosticoFactory;
 
 import com.mycompany.tarea2.NotificacionObserver.Observer;
+import com.mycompany.tarea2.Usuario.Cliente;
 
 /**
  *
  * @author cesar
  */
-public class PronosticoMarcadorExacto extends PronosticoFactory implements StrategyPronostico{
+public class ApuestaResultado extends ApuestaFactory implements StrategyPronostico{
     
-    public PronosticoMarcadorExacto(String email, EventoDeportivo evento, Boolean estado, int PronosticoID, Observer[] observers) {
-        super(email, evento, estado, PronosticoID, observers);
+    public ApuestaResultado(Cliente cliente, EventoDeportivo evento) {
+        this.email = cliente.getCorreo( );
+        this.evento = evento;
+        this.estado = false;
     }
-
     @Override
-    public void calcularResultado() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void realizarPronostico() {
+        System.out.println("Apuesta realizada para el evento:");
+        this.estado = true;
     }
 
     @Override
@@ -33,6 +36,11 @@ public class PronosticoMarcadorExacto extends PronosticoFactory implements Strat
 
     @Override
     public void notifyObserver() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void calcularResultado() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

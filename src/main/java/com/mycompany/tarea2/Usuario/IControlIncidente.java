@@ -9,6 +9,6 @@ package com.mycompany.tarea2.Usuario;
  * @author cesar
  */
 public interface IControlIncidente {
-    public void gestionarReporte();
+    public void gestionarReporte(Reporte reporte);
     public void escalarReporte();
 }

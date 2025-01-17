@@ -10,24 +10,18 @@ package com.mycompany.tarea2.Usuario;
  */
 public class Soporte extends Usuario implements IControlIncidente{
 
-    public Soporte(String nombre, String correo, int cedula) {
+    public Soporte(String nombre, String correo, String cedula) {
         super(nombre, correo, cedula);
-    }
-    public void gestionarReporte(Reporte reporte) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    public void escalarReporte(Incidente indicente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void gestionarReporte() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void gestionarReporte(Reporte reporte) {
+        System.out.println("Soporte gestionando reporte: " + reporte.getStringReporte());
     }
 
     @Override
     public void escalarReporte() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Soporte escalando reporte...");
     }
     
 }

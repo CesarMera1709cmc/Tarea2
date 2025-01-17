@@ -9,32 +9,17 @@ package com.mycompany.tarea2.Usuario;
  * @author cesar
  */
 public class Cliente extends Usuario{
-    private double puntos;
+    private Puntos moneda;
     private int ranking;
-    
-    public Reporte reportar(String queja){
-        Reporte r = new Reporte();
-        r.setQueja((queja));
 
-        return r;
-    }
-    public void  actualizarPuntos(){
-        
-    }
-    public void canjearPuntos(){
-        
-    }
-    
-    public Cliente(String nombre, String correo, int cedula) {
+    public Cliente(String nombre, String correo, String cedula) {
         super(nombre, correo, cedula);
     }
-    
-    public double getPuntos() {
-        return puntos;
-    }
 
-    public void setPuntos(double puntos) {
-        this.puntos = puntos;
+    
+
+    public void canjearPuntos() {
+        System.out.println("Puntos canjeados por el cliente: " + nombre);
     }
 
     public int getRanking() {
@@ -45,34 +30,12 @@ public class Cliente extends Usuario{
         this.ranking = ranking;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void reportar(String queja) {
+        System.out.println("Cliente " + nombre + " reportó: " + queja);
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public int getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
-    }
-
-    public Cliente(double puntos, int ranking, String nombre, String correo, int cedula) {
-        super(nombre, correo, cedula);
-        this.puntos = puntos;
-        this.ranking = ranking;
+    public Puntos getMoneda() {
+        return moneda;
     }
     
 }

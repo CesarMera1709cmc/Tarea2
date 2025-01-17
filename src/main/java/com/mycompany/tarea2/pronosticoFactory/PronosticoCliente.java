@@ -5,44 +5,19 @@
 package com.mycompany.tarea2.pronosticoFactory;
 
 import com.mycompany.tarea2.Usuario.Cliente;
+import java.util.List;
 
 /**
  *
  * @author cesar
  */
 public class PronosticoCliente {
-    private PronosticoFactory[] pronosticos;
     private Cliente cliente;
     private int pronosticosClienteId;
+    private List<ApuestaFactory> pronosticos;
 
-    public PronosticoCliente(PronosticoFactory[] pronosticos, Cliente cliente, int pronosticosClienteId) {
-        this.pronosticos = pronosticos;
-        this.cliente = cliente;
-        this.pronosticosClienteId = pronosticosClienteId;
-    }
-
-    public PronosticoFactory[] getPronosticos() {
-        return pronosticos;
-    }
-
-    public void setPronosticos(PronosticoFactory[] pronosticos) {
-        this.pronosticos = pronosticos;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public int getPronosticosClienteId() {
-        return pronosticosClienteId;
-    }
-
-    public void setPronosticosClienteId(int pronosticosClienteId) {
-        this.pronosticosClienteId = pronosticosClienteId;
+    public void actualizarPuntos() {
+        System.out.println("Actualizando puntos para el cliente: " + cliente.getNombre());
     }
     
 }
