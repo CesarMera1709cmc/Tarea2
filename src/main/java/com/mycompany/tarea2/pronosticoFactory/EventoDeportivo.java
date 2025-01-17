@@ -13,7 +13,7 @@ public abstract class EventoDeportivo {
 
 
     abstract public void mostrarEstadisticas();
-
+    abstract public void mostrarDetalles();
 
     public int getEventoId() {
         return eventoId;
