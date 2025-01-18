@@ -29,7 +29,9 @@ public abstract class ApuestaStrategy {
         throw new UnsupportedOperationException("Not supported yet.");
     };
 
-     abstract double calcularMonto();
+    public abstract double calcularMonto();
+     
+    public abstract void mostrarOpciones();
 
     public EventoDeportivo getEvento() {
         return evento;

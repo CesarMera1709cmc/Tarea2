@@ -4,14 +4,20 @@
  */
 package ec.edu.espol.sportspredictor;
 
+import ec.edu.espol.sportspredictor.apuesta.ApuestaStrategy;
+import ec.edu.espol.sportspredictor.apuesta.StrategyBaloncesto;
+import ec.edu.espol.sportspredictor.apuesta.StrategyFutbol;
+import ec.edu.espol.sportspredictor.apuesta.StrategyTennis;
 import ec.edu.espol.sportspredictor.eventofactory.EventoBaloncesto;
 import ec.edu.espol.sportspredictor.eventofactory.EventoDeportivo;
 import ec.edu.espol.sportspredictor.eventofactory.EventoFutbol;
 import ec.edu.espol.sportspredictor.eventofactory.EventoTennis;
+import ec.edu.espol.sportspredictor.eventofactory.Partido;
 import ec.edu.espol.sportspredictor.usuario.Cliente;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -64,7 +70,7 @@ public class SistemaApuestas {
                 evento = new EventoTennis(nombres[n1], nombres[n2]);
                 break;
             case 2:
-                evento = new EventoBaloncesto(nombres[n1] + " FC", nombres[n2] + " FC");
+                evento = new EventoBaloncesto(nombres[n1] + " Team", nombres[n2] + " Team");
                 break;
             default:
                 evento = new EventoFutbol(nombres[n1], nombres[n2]);
@@ -74,9 +80,10 @@ public class SistemaApuestas {
         agregarEvento(evento);
     }
     
-    public void registrarCliente(Cliente cliente) {
+    public ApuestasCliente registrarCliente(Cliente cliente) {
         ApuestasCliente apuestas = new ApuestasCliente(cliente);
         this.apostadores.add(apuestas);
+        return apuestas;
     }
     
     public static void main(String[] args) {
@@ -92,7 +99,7 @@ public class SistemaApuestas {
         String cedula = sc.next();
         
         Cliente cliente = new Cliente(nombre, correo, cedula);
-        self.registrarCliente(cliente);
+        ApuestasCliente apuestas = self.registrarCliente(cliente);
         System.out.println("Bienvenido " + cliente.getNombre());
         
         
@@ -113,6 +120,41 @@ public class SistemaApuestas {
         EventoDeportivo evento = self.eventos.get(i);
         System.out.println("has seleccionado " + evento.getTitulo());
         
+        ApuestaStrategy strategy = apuestas.crearApuesta(evento, 2.2);
         
+        System.out.println("opciones de apuesta:");
+        strategy.mostrarOpciones();
+        
+        int seleccion = sc.nextInt();
+        if (seleccion < 1|| seleccion > 2) return;
+        
+        switch (evento.getCategoria()) {
+            case "futbol":
+                StrategyFutbol f = (StrategyFutbol)strategy;
+                if (seleccion == 1) f.apostarEquipo1(); else f.apostarEquipo2();
+                break;
+            case "tennis":
+                StrategyTennis t = (StrategyTennis)strategy;
+                if (seleccion == 1) t.apostarJugador1(); else t.apostarJugador2();
+                break;
+            case "baloncesto":
+                StrategyBaloncesto b = (StrategyBaloncesto)strategy;
+                if (seleccion == 1) b.apostarEquipo1(); else b.apostarEquipo2();
+                break;
+        }
+        
+        Partido p = evento.iniciarPartido();
+        System.out.println("ejecutando partido...");
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {}
+        p.finalizar();
+        //p.mostrarMarcador();
+        Random r = new Random();
+        if (r.nextInt(2) == 0) {
+            System.out.println("has acertado la apuesta!");
+        } else {
+            System.out.println("no has acertado la apuesta.");
+        }
     }
 }

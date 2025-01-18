@@ -18,6 +18,16 @@ public class EventoFutbol extends EventoDeportivo {
         this.categoria = "futbol";
     }
 
+    public String getEquipo1() {
+        return equipo1;
+    }
+
+    public String getEquipo2() {
+        return equipo2;
+    }
+
+    
+    
     @Override
     public PartidoFutbol iniciarPartido() {
         PartidoFutbol partido = new PartidoFutbol();

@@ -5,6 +5,7 @@
 package ec.edu.espol.sportspredictor.apuesta;
 
 import ec.edu.espol.sportspredictor.eventofactory.EventoDeportivo;
+import ec.edu.espol.sportspredictor.eventofactory.EventoFutbol;
 
 /**
  *
@@ -26,8 +27,14 @@ public class StrategyFutbol extends ApuestaStrategy {
     }
 
     @Override
-    double calcularMonto() {
+    public double calcularMonto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mostrarOpciones() {
+        EventoFutbol event = (EventoFutbol)this.getEvento();
+        System.out.println("1. " + event.getEquipo1()+ " | 2. " + event.getEquipo2());
     }
 
 }

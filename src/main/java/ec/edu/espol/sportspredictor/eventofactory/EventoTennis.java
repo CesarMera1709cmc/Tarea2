@@ -17,6 +17,16 @@ public class EventoTennis extends EventoDeportivo {
         jugador2 = j2;
         this.categoria = "tennis";
     }
+
+    public String getJugador1() {
+        return jugador1;
+    }
+
+    public String getJugador2() {
+        return jugador2;
+    }
+    
+    
     
     @Override
     public PartidoTennis iniciarPartido() {
