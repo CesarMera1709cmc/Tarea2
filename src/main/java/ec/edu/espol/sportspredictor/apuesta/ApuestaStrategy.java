@@ -15,6 +15,11 @@ public abstract class ApuestaStrategy {
     private EventoDeportivo evento;
     private EstadoApuesta estado;
 
+    protected ApuestaStrategy(EventoDeportivo e) {
+        evento = e;
+        estado = EstadoApuesta.PENDIENTE;
+    }
+    
     public void actualizarEstado(EstadoApuesta nuevoEstado) {
         this.estado = nuevoEstado;
         this.notificarEstado();

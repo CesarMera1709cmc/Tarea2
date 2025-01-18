@@ -4,11 +4,17 @@
  */
 package ec.edu.espol.sportspredictor.apuesta;
 
+import ec.edu.espol.sportspredictor.eventofactory.EventoDeportivo;
+
 /**
  *
  * @author pakamijo
  */
 public class StrategyTennis extends ApuestaStrategy {
+    
+    public StrategyTennis(EventoDeportivo e) {
+        super(e);
+    }
 
     public void apostarJugador1() {
     }

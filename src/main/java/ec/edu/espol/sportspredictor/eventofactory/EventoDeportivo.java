@@ -11,12 +11,17 @@ import java.time.LocalDateTime;
  * @author pakamijo
  */
 public abstract class EventoDeportivo {
+
     private int id;
-    private LocalDateTime fecha;
-    private String categoria;
-    private String resultado;
-    
+    protected LocalDateTime fecha;
+    protected String categoria;
+    protected String resultado;
+
     public abstract Partido iniciarPartido();
-    
+
     public abstract String getTitulo();
+    
+    public String getCategoria() {
+        return this.categoria;
+    };
 }

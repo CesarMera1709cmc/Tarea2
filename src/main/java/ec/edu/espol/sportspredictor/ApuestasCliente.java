@@ -5,6 +5,9 @@
 package ec.edu.espol.sportspredictor;
 
 import ec.edu.espol.sportspredictor.apuesta.ApuestaStrategy;
+import ec.edu.espol.sportspredictor.apuesta.StrategyBaloncesto;
+import ec.edu.espol.sportspredictor.apuesta.StrategyFutbol;
+import ec.edu.espol.sportspredictor.apuesta.StrategyTennis;
 import ec.edu.espol.sportspredictor.eventofactory.EventoDeportivo;
 import ec.edu.espol.sportspredictor.usuario.Cliente;
 import java.util.ArrayList;
@@ -17,9 +20,32 @@ public class ApuestasCliente {
     private Cliente cliente;
     private int id;
     private ArrayList<ApuestaStrategy> apuestas;
+    
+    public ApuestasCliente(Cliente cliente) {
+        this.cliente = cliente;
+        this.apuestas = new ArrayList();
+        this.id = 1;
+    }
    
-    public void crearApuesta(EventoDeportivo evento, double monto) {
-
+    public ApuestaStrategy crearApuesta(EventoDeportivo evento, double monto) {
+        ApuestaStrategy strategy;
+        switch (evento.getCategoria()) {
+            case "futbol":
+                strategy = new StrategyFutbol(evento);
+                break;
+            case "tennis":
+                strategy = new StrategyTennis(evento);
+                break;
+            case "baloncesto":
+                strategy = new StrategyBaloncesto(evento);
+                break;
+            default:
+                strategy = null;
+                break;
+        }
+        this.apuestas.add(strategy);
+        
+        return strategy;
     }
 
 }
