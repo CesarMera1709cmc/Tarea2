@@ -5,7 +5,7 @@ enlace al repositorio github:
 https://github.com/CesarMera1709cmc/Tarea2
 
 
-Modificación del Patrón Abstract Factory:
+Modificación del Patrón Abstract Factory a Factory method:
 
 Optimizado para la creación de apuestas simples, eliminando complejidad innecesaria y mejorando la eficiencia.
 Incorporación del Patrón Singleton:
@@ -22,6 +22,6 @@ Rigidización ante modificaciones profundas en estrategias (ApuestaStrategy) o e
 Escalabilidad puede complicar relaciones entre clases al incorporar nuevos deportes o eventos.
 Beneficios de los Patrones Aplicados:
 
-Estrategia: Flexibilidad al cambiar reglas de apuesta sin afectar el sistema.
+Estrategy: Flexibilidad al cambiar reglas de apuesta sin afectar el sistema.
 Observador: Notificación eficiente y descentralizada.
 Singleton: Control centralizado con una única instancia.
