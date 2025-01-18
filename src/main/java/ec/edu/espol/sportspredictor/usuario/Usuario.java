@@ -14,7 +14,19 @@ public abstract class Usuario {
     private String correo;
     private boolean enlinea;
     
+    public Usuario(String nombre, String correo, String cedula) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.cedula = cedula;
+    }
+    
     public void iniciarSesion(String password) {
         System.out.println("sesion iniciada");
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
 }

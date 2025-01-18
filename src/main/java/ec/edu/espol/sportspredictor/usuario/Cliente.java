@@ -14,8 +14,8 @@ public class Cliente extends Usuario {
     private Puntos puntos;
     private int ranking;
     
-    public Cliente() {
-        super();
+    public Cliente(String nombre, String correo, String cedula) {
+        super(nombre, correo, cedula);
     }
 
     public int getRanking() {

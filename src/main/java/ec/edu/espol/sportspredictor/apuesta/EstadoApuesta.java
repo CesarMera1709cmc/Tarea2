@@ -9,5 +9,5 @@ package ec.edu.espol.sportspredictor.apuesta;
  * @author pakamijo
  */
 public enum EstadoApuesta {
-    PREVENTA, INICIADO, FINALIZADO
+    PENDIENTE, ACERTADO, FALLIDO, REVISANDO
 }
