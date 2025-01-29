@@ -85,11 +85,8 @@ public class SistemaApuestas {
         this.apostadores.add(apuestas);
         return apuestas;
     }
-    
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        SistemaApuestas self = SistemaApuestas.getSistema();
-        
+
+    private static Cliente registrarCliente(Scanner sc) {
         System.out.println("/registro de cuenta/");
         System.out.println("ingresar nombre de usuario:");
         String nombre = sc.next();
@@ -97,59 +94,60 @@ public class SistemaApuestas {
         String correo = sc.next();
         System.out.println("ingresar cedula:");
         String cedula = sc.next();
-        
-        Cliente cliente = new Cliente(nombre, correo, cedula);
-        ApuestasCliente apuestas = self.registrarCliente(cliente);
-        System.out.println("Bienvenido " + cliente.getNombre());
-        
-        
-        
+    
+        return new Cliente(nombre, correo, cedula);
+    }
+
+    private static void crearEventosAleatorios(SistemaApuestas sistema) {
         for (int i = 0; i < 5; i++) {
-            self.agregarEventoAleatorio();
+            sistema.agregarEventoAleatorio();
         }
-        
-        self.mostrarEventosDisponibles();
+    }
+    private static EventoDeportivo seleccionarEvento(SistemaApuestas sistema, Scanner sc) {
+        sistema.mostrarEventosDisponibles();
         System.out.println("selecciona un evento:");
         int i = sc.nextInt() - 1;
-        
-        if (i >= self.eventos.size() || i < 0) {
+    
+        if (i >= sistema.eventos.size() || i < 0) {
             System.out.println("seleccion invalida");
-            return;
+            return null;
         }
-        
-        EventoDeportivo evento = self.eventos.get(i);
-        System.out.println("has seleccionado " + evento.getTitulo());
-        
+    
+        return sistema.eventos.get(i);
+    }
+    private static void realizarApuesta(EventoDeportivo evento, ApuestasCliente apuestas, Scanner sc) {
         ApuestaStrategy strategy = apuestas.crearApuesta(evento, 2.2);
-        
+    
         System.out.println("opciones de apuesta:");
         strategy.mostrarOpciones();
-        
+    
         int seleccion = sc.nextInt();
-        if (seleccion < 1|| seleccion > 2) return;
-        
+        if (seleccion < 1 || seleccion > 2) return;
+    
         switch (evento.getCategoria()) {
             case "futbol":
-                StrategyFutbol f = (StrategyFutbol)strategy;
+                StrategyFutbol f = (StrategyFutbol) strategy;
                 if (seleccion == 1) f.apostarEquipo1(); else f.apostarEquipo2();
                 break;
             case "tennis":
-                StrategyTennis t = (StrategyTennis)strategy;
+                StrategyTennis t = (StrategyTennis) strategy;
                 if (seleccion == 1) t.apostarJugador1(); else t.apostarJugador2();
                 break;
             case "baloncesto":
-                StrategyBaloncesto b = (StrategyBaloncesto)strategy;
+                StrategyBaloncesto b = (StrategyBaloncesto) strategy;
                 if (seleccion == 1) b.apostarEquipo1(); else b.apostarEquipo2();
                 break;
         }
-        
+    }
+
+    private static void simularPartido(EventoDeportivo evento) {
         Partido p = evento.iniciarPartido();
         System.out.println("ejecutando partido...");
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {}
         p.finalizar();
-        //p.mostrarMarcador();
+    
         Random r = new Random();
         if (r.nextInt(2) == 0) {
             System.out.println("has acertado la apuesta!");
@@ -157,4 +155,18 @@ public class SistemaApuestas {
             System.out.println("no has acertado la apuesta.");
         }
     }
+    
+    public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    SistemaApuestas sistema = SistemaApuestas.getSistema();
+    Cliente cliente = registrarCliente(sc);
+    ApuestasCliente apuestas = sistema.registrarCliente(cliente);
+    System.out.println("Bienvenido " + cliente.getNombre());
+    crearEventosAleatorios(sistema);
+    EventoDeportivo evento = seleccionarEvento(sistema, sc);
+    if (evento == null) return; 
+    System.out.println("has seleccionado " + evento.getTitulo());
+    realizarApuesta(evento, apuestas, sc);
+    simularPartido(evento);
+}
 }
