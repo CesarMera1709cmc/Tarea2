@@ -17,7 +17,7 @@ public class StrategyFutbol extends ApuestaStrategy {
     public StrategyFutbol(EventoDeportivo e) {
         super(e);
     }
-    
+
     public void apostarEquipo1() {
         seleccionEquipo1 = true;
     }
@@ -28,13 +28,12 @@ public class StrategyFutbol extends ApuestaStrategy {
 
     @Override
     public double calcularMonto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public void mostrarOpciones() {
-        EventoFutbol event = (EventoFutbol)this.getEvento();
-        System.out.println("1. " + event.getEquipo1()+ " | 2. " + event.getEquipo2());
+        EventoFutbol event = (EventoFutbol) this.getEvento();
+        mostrarOpciones(event.getEquipo1(), event.getEquipo2()); // Usa el método protegido de la superclase
     }
-
 }

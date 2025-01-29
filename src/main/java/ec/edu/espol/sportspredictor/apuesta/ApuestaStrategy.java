@@ -19,7 +19,7 @@ public abstract class ApuestaStrategy {
         evento = e;
         estado = EstadoApuesta.PENDIENTE;
     }
-    
+
     public void actualizarEstado(EstadoApuesta nuevoEstado) {
         this.estado = nuevoEstado;
         this.notificarEstado();
@@ -27,10 +27,14 @@ public abstract class ApuestaStrategy {
 
     public void notificarEstado() {
         throw new UnsupportedOperationException("Not supported yet.");
-    };
+    }
 
     public abstract double calcularMonto();
-     
+
+    protected void mostrarOpciones(String opcion1, String opcion2) {
+        System.out.println("1. " + opcion1 + " | 2. " + opcion2);
+    }
+
     public abstract void mostrarOpciones();
 
     public EventoDeportivo getEvento() {
