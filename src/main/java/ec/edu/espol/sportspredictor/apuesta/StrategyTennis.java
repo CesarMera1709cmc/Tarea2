@@ -17,6 +17,15 @@ public class StrategyTennis extends ApuestaStrategy {
         super(e);
     }
 
+    @Override
+    public void configurarApuesta(int seleccion) {
+        if (seleccion == 1) {
+            this.apostarJugador1();
+        } else {
+            this.apostarJugador2();
+        }
+    }
+
     public void apostarJugador1() {
         jugador1=true;
     }

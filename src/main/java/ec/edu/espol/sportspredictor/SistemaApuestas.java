@@ -99,7 +99,7 @@ public class SistemaApuestas {
     }
 
     private static ApuestaStrategy realizarApuesta(EventoDeportivo evento, ApuestasCliente apuestas, Scanner sc) {
-        ApuestaStrategy strategy = apuestas.crearApuesta(evento, 2.2);
+        ApuestaStrategy strategy = ApuestaFactory.crearApuesta(evento);
     
         System.out.println("Opciones de apuesta:");
         strategy.mostrarOpciones();
@@ -110,20 +110,11 @@ public class SistemaApuestas {
             return null;
         }
     
-        switch (evento.getCategoria()) {
-            case "futbol":
-                StrategyFutbol f = (StrategyFutbol) strategy;
-                if (seleccion == 1) f.apostarEquipo1(); else f.apostarEquipo2();
-                break;
-            case "tennis":
-                StrategyTennis t = (StrategyTennis) strategy;
-                if (seleccion == 1) t.apostarJugador1(); else t.apostarJugador2();
-                break;
-            case "baloncesto":
-                StrategyBaloncesto b = (StrategyBaloncesto) strategy;
-                if (seleccion == 1) b.apostarEquipo1(); else b.apostarEquipo2();
-                break;
-        }
+        // Configurar la apuesta según la selección del usuario
+        strategy.configurarApuesta(seleccion);
+
+        // Agregar la estrategia a la lista de apuestas del cliente
+        apuestas.agregarApuesta(strategy);
     
         return strategy; // Devolver la estrategia creada
     }

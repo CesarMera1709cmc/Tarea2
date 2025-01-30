@@ -13,6 +13,15 @@ public class StrategyBaloncesto extends ApuestaStrategy {
         super(e);
     }
 
+    @Override
+    public void configurarApuesta(int seleccion) {
+        if (seleccion == 1) {
+            this.apostarEquipo1();
+        } else {
+            this.apostarEquipo2();
+        }
+    }
+
     public void apostarEquipo1() {
         seleccionEquipo1 = true;
     }

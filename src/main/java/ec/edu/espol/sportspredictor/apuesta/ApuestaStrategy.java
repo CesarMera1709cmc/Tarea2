@@ -25,6 +25,8 @@ public abstract class ApuestaStrategy {
         this.notificarEstado();
     }
 
+    public abstract void configurarApuesta(int seleccion);
+
     public void notificarEstado() {
         String mensaje = "El estado de la apuesta ha cambiado a: " + this.estado;
         System.out.println(mensaje);

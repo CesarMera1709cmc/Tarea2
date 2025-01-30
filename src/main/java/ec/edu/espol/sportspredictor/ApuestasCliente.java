@@ -27,9 +27,14 @@ public class ApuestasCliente {
         this.id = 1;
     }
 
-    public ApuestaStrategy crearApuesta(EventoDeportivo evento, double monto) {
-        ApuestaStrategy strategy = ApuestaFactory.crearApuesta(evento);
+    // Método modificado para recibir una estrategia ya creada
+    public void agregarApuesta(ApuestaStrategy strategy) {
         this.apuestas.add(strategy);
-        return strategy;
     }
+
+    // Getter para la lista de apuestas (opcional)
+    public ArrayList<ApuestaStrategy> getApuestas() {
+        return apuestas;
+    }
+    
 }
