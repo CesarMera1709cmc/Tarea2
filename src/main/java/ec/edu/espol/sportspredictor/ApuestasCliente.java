@@ -20,32 +20,16 @@ public class ApuestasCliente {
     private Cliente cliente;
     private int id;
     private ArrayList<ApuestaStrategy> apuestas;
-    
+
     public ApuestasCliente(Cliente cliente) {
         this.cliente = cliente;
-        this.apuestas = new ArrayList();
+        this.apuestas = new ArrayList<>();
         this.id = 1;
     }
-   
+
     public ApuestaStrategy crearApuesta(EventoDeportivo evento, double monto) {
-        ApuestaStrategy strategy;
-        switch (evento.getCategoria()) {
-            case "futbol":
-                strategy = new StrategyFutbol(evento);
-                break;
-            case "tennis":
-                strategy = new StrategyTennis(evento);
-                break;
-            case "baloncesto":
-                strategy = new StrategyBaloncesto(evento);
-                break;
-            default:
-                strategy = null;
-                break;
-        }
+        ApuestaStrategy strategy = ApuestaFactory.crearApuesta(evento);
         this.apuestas.add(strategy);
-        
         return strategy;
     }
-
 }
