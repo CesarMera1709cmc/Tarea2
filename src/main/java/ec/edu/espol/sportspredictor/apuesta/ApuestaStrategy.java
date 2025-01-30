@@ -26,7 +26,16 @@ public abstract class ApuestaStrategy {
     }
 
     public void notificarEstado() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String mensaje = "El estado de la apuesta ha cambiado a: " + this.estado;
+        System.out.println(mensaje);
+    
+        if (this.estado == EstadoApuesta.ACERTADO) {
+            System.out.println("¡Felicidades! Has ganado la apuesta.");
+        } else if (this.estado == EstadoApuesta.FALLIDO) {
+            System.out.println("Lo siento, no has acertado la apuesta.");
+        }
+    
+        
     }
 
     public abstract double calcularMonto();

@@ -8,18 +8,24 @@ import ec.edu.espol.sportspredictor.eventofactory.EventoDeportivo;
 import ec.edu.espol.sportspredictor.eventofactory.EventoBaloncesto;
 
 public class StrategyBaloncesto extends ApuestaStrategy {
-
+    private boolean seleccionEquipo1;
     public StrategyBaloncesto(EventoDeportivo e) {
         super(e);
     }
 
-    public void apostarEquipo1() {}
+    public void apostarEquipo1() {
+        seleccionEquipo1 = true;
+    }
 
-    public void apostarEquipo2() {}
-
-    @Override
+    public void apostarEquipo2() {
+        seleccionEquipo1 = false;
+    }
     public double calcularMonto() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (seleccionEquipo1) {
+            return 10.0; 
+        } else {
+            return 15.0; 
+        }
     }
 
     @Override

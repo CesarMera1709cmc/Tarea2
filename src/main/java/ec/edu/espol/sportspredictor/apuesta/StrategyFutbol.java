@@ -27,13 +27,17 @@ public class StrategyFutbol extends ApuestaStrategy {
     }
 
     @Override
-    public double calcularMonto() {
-        throw new UnsupportedOperationException("Not supported yet.");
+public double calcularMonto() {
+    if (seleccionEquipo1) {
+        return 10.0; 
+    } else {
+        return 15.0; 
     }
+}
 
     @Override
     public void mostrarOpciones() {
         EventoFutbol event = (EventoFutbol) this.getEvento();
-        mostrarOpciones(event.getEquipo1(), event.getEquipo2()); // Usa el método protegido de la superclase
+        mostrarOpciones(event.getEquipo1(), event.getEquipo2()); 
     }
 }

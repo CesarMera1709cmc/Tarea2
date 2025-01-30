@@ -5,6 +5,7 @@
 package ec.edu.espol.sportspredictor;
 
 import ec.edu.espol.sportspredictor.apuesta.ApuestaStrategy;
+import ec.edu.espol.sportspredictor.apuesta.EstadoApuesta;
 import ec.edu.espol.sportspredictor.apuesta.StrategyBaloncesto;
 import ec.edu.espol.sportspredictor.apuesta.StrategyFutbol;
 import ec.edu.espol.sportspredictor.apuesta.StrategyTennis;
@@ -48,15 +49,22 @@ public class SistemaApuestas {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         SistemaApuestas sistema = SistemaApuestas.getSistema();
+    
         Cliente cliente = registrarCliente(sc);
         ApuestasCliente apuestas = sistema.getGestorClientes().registrarCliente(cliente);
         System.out.println("Bienvenido " + cliente.getNombre());
+    
+        // Crear eventos aleatorios
         crearEventosAleatorios(sistema.getGestorEventos());
+    
         EventoDeportivo evento = seleccionarEvento(sistema.getGestorEventos(), sc);
-        if (evento == null) return; 
+        if (evento == null) return; // Salir si la selección es inválida
+    
         System.out.println("Has seleccionado " + evento.getTitulo());
-        realizarApuesta(evento, apuestas, sc);
-        simularPartido(evento);
+    
+        ApuestaStrategy estrategia = realizarApuesta(evento, apuestas, sc);
+    
+        simularPartido(evento, estrategia);
     }
 
     private static Cliente registrarCliente(Scanner sc) {
@@ -90,15 +98,18 @@ public class SistemaApuestas {
         return gestorEventos.getEventos().get(i);
     }
 
-    private static void realizarApuesta(EventoDeportivo evento, ApuestasCliente apuestas, Scanner sc) {
+    private static ApuestaStrategy realizarApuesta(EventoDeportivo evento, ApuestasCliente apuestas, Scanner sc) {
         ApuestaStrategy strategy = apuestas.crearApuesta(evento, 2.2);
-
+    
         System.out.println("Opciones de apuesta:");
         strategy.mostrarOpciones();
-
+    
         int seleccion = sc.nextInt();
-        if (seleccion < 1 || seleccion > 2) return;
-
+        if (seleccion < 1 || seleccion > 2) {
+            System.out.println("Selección inválida. Saliendo...");
+            return null;
+        }
+    
         switch (evento.getCategoria()) {
             case "futbol":
                 StrategyFutbol f = (StrategyFutbol) strategy;
@@ -113,21 +124,29 @@ public class SistemaApuestas {
                 if (seleccion == 1) b.apostarEquipo1(); else b.apostarEquipo2();
                 break;
         }
+    
+        return strategy; // Devolver la estrategia creada
     }
 
-    private static void simularPartido(EventoDeportivo evento) {
+    private static void simularPartido(EventoDeportivo evento, ApuestaStrategy estrategia) {
         Partido p = evento.iniciarPartido();
         System.out.println("Ejecutando partido...");
         try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {}
-        p.finalizar();
-
-        Random r = new Random();
-        if (r.nextInt(2) == 0) {
-            System.out.println("¡Has acertado la apuesta!");
-        } else {
-            System.out.println("No has acertado la apuesta.");
+            TimeUnit.SECONDS.sleep(2); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        p.finalizar();
+    
+        Random r = new Random();
+        boolean apuestaAcertada = r.nextBoolean(); // 50% de probabilidad de acertar
+    
+        if (apuestaAcertada) {
+            estrategia.actualizarEstado(EstadoApuesta.ACERTADO);
+        } else {
+            estrategia.actualizarEstado(EstadoApuesta.FALLIDO);
+        }
+    
+        System.out.println("Resultado del partido: " + (apuestaAcertada ? "¡Has ganado!" : "Has perdido."));
     }
 }

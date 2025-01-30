@@ -11,8 +11,8 @@ package ec.edu.espol.sportspredictor.notificacion;
 public class NotificacionCorreo implements Observer{
 
     @Override
-    public void actualizar(String mensaje) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+public void actualizar(String mensaje) {
+    System.out.println("Notificación por correo enviada: " + mensaje);
+}
     
 }

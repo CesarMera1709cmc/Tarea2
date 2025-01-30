@@ -12,18 +12,26 @@ import ec.edu.espol.sportspredictor.eventofactory.EventoTennis;
  * @author pakamijo
  */
 public class StrategyTennis extends ApuestaStrategy {
-
+    public boolean jugador1;
     public StrategyTennis(EventoDeportivo e) {
         super(e);
     }
 
-    public void apostarJugador1() {}
+    public void apostarJugador1() {
+        jugador1=true;
+    }
 
-    public void apostarJugador2() {}
+    public void apostarJugador2() {
+        jugador1=false;
+    }
 
     @Override
     public double calcularMonto() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (jugador1) {
+            return 12.0; 
+        } else {
+            return 14.0; 
+        }
     }
 
     @Override
