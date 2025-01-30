@@ -13,9 +13,15 @@ import java.time.LocalDateTime;
 public abstract class EventoDeportivo {
 
     private int id;
-    protected LocalDateTime fecha;
-    protected String categoria;
-    protected String resultado;
+    private LocalDateTime fecha;
+    private String categoria;
+    private String resultado;
+
+    
+
+
+    public EventoDeportivo() {
+    }
 
     public abstract Partido iniciarPartido();
 
@@ -24,4 +30,29 @@ public abstract class EventoDeportivo {
     public String getCategoria() {
         return this.categoria;
     };
+
+    protected void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        if (resultado != null && !resultado.isEmpty()) {
+            this.resultado = resultado;
+        } else {
+            throw new IllegalArgumentException("El resultado no puede ser nulo o vacío.");
+        }
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+
 }

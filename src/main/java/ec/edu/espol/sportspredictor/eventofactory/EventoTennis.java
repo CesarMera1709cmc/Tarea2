@@ -15,7 +15,7 @@ public class EventoTennis extends EventoDeportivo {
     public EventoTennis(String j1, String j2) {
         jugador1 = j1;
         jugador2 = j2;
-        this.categoria = "tennis";
+        this.setCategoria("tennis");
     }
 
     public String getJugador1() {

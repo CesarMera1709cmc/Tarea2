@@ -15,7 +15,7 @@ public class EventoFutbol extends EventoDeportivo {
     public EventoFutbol(String e1, String e2) {
         equipo1 = e1;
         equipo2 = e2;
-        this.categoria = "futbol";
+        this.setCategoria("futbol");
     }
 
     public String getEquipo1() {

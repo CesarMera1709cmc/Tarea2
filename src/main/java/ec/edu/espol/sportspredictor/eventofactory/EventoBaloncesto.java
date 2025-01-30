@@ -24,7 +24,7 @@ public class EventoBaloncesto extends EventoDeportivo {
     public EventoBaloncesto(String e1, String e2) {
         equipo1 = e1;
         equipo2 = e2;
-        this.categoria = "baloncesto";
+        this.setCategoria("baloncesto");
     }
 
     @Override
