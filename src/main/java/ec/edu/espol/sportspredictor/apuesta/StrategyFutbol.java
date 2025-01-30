@@ -12,15 +12,15 @@ import ec.edu.espol.sportspredictor.eventofactory.EventoFutbol;
  * @author pakamijo
  */
 public class StrategyFutbol extends ApuestaStrategy {
-    private boolean seleccionEquipo1;
+    private boolean apuestaEquipo1;
 
     public StrategyFutbol(EventoDeportivo e) {
         super(e);
     }
 
     @Override
-    public void configurarApuesta(int seleccion) {
-        if (seleccion == 1) {
+    public void configurarApuesta(int opcionSeleccionada) {
+        if (opcionSeleccionada == 1) {
             this.apostarEquipo1();
         } else {
             this.apostarEquipo2();
@@ -28,16 +28,16 @@ public class StrategyFutbol extends ApuestaStrategy {
     }
 
     public void apostarEquipo1() {
-        seleccionEquipo1 = true;
+        apuestaEquipo1 = true;
     }
 
     public void apostarEquipo2() {
-        seleccionEquipo1 = false;
+        apuestaEquipo1 = false;
     }
 
     @Override
 public double calcularMonto() {
-    if (seleccionEquipo1) {
+    if (apuestaEquipo1) {
         return 10.0; 
     } else {
         return 15.0; 

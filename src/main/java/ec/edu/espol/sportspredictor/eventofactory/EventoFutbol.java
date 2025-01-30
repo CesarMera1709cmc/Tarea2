@@ -12,9 +12,9 @@ public class EventoFutbol extends EventoDeportivo {
     private String equipo1;
     private String equipo2;
     
-    public EventoFutbol(String e1, String e2) {
-        equipo1 = e1;
-        equipo2 = e2;
+    public EventoFutbol(String equipo1, String equipo2) {
+        this.equipo1 = equipo1;
+        this.equipo2 = equipo2;
         this.setCategoria("futbol");
     }
 

@@ -15,8 +15,8 @@ public abstract class ApuestaStrategy {
     private EventoDeportivo evento;
     private EstadoApuesta estado;
 
-    protected ApuestaStrategy(EventoDeportivo e) {
-        evento = e;
+    protected ApuestaStrategy(EventoDeportivo eventoDeportivo) {
+        evento = eventoDeportivo;
         estado = EstadoApuesta.PENDIENTE;
     }
 
