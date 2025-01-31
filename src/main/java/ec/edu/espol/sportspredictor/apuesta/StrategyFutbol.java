@@ -20,6 +20,10 @@ public class StrategyFutbol extends ApuestaStrategy {
 
     @Override
     public void configurarApuesta(int opcionSeleccionada) {
+        if (opcionSeleccionada >2 || opcionSeleccionada <0){
+            throw new IllegalArgumentException();
+        }
+        
         if (opcionSeleccionada == 1) {
             this.apostarEquipo1();
         } else {
@@ -27,12 +31,13 @@ public class StrategyFutbol extends ApuestaStrategy {
         }
     }
 
-    public void apostarEquipo1() {
-        apuestaEquipo1 = true;
+    public boolean apostarEquipo1() {
+        System.out.println("Apuesta realizada correctamente");
+        return apuestaEquipo1 = true;
     }
 
-    public void apostarEquipo2() {
-        apuestaEquipo1 = false;
+    public boolean apostarEquipo2() {
+        return apuestaEquipo1 = false;
     }
 
     @Override

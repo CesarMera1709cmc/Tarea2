@@ -22,6 +22,6 @@ public class ControlCalidad extends Usuario implements IGestionReporte {
     public void ajustarPuntuacion(Usuario usuario, int puntos) {
         System.out.println("Ajustando puntuación para usuario: " + usuario.getNombre());
     }
-
+    
     
 }

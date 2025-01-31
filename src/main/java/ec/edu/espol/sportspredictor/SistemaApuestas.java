@@ -67,16 +67,12 @@ public class SistemaApuestas {
         simularPartido(evento, estrategia);
     }
 
-    private static Cliente registrarCliente(Scanner sc) {
+    static Cliente registrarCliente(Scanner sc) {
         System.out.println("/registro de cuenta/");
         System.out.println("Ingresar nombre de usuario:");
         String nombre = sc.next();
-        System.out.println("Ingresar correo:");
-        String correo = sc.next();
-        System.out.println("Ingresar cédula:");
-        String cedula = sc.next();
 
-        return new Cliente(nombre, correo, cedula);
+        return new Cliente(nombre, "ceanmera", "1314606995");
     }
 
     private static void crearEventosAleatorios(GestorEventos gestorEventos) {

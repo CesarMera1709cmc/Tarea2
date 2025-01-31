@@ -31,7 +31,7 @@ public abstract class EventoDeportivo {
         return this.categoria;
     };
 
-    protected void setCategoria(String categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
