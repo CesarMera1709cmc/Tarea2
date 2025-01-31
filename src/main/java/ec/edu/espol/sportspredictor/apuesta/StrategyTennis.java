@@ -19,6 +19,9 @@ public class StrategyTennis extends ApuestaStrategy {
 
     @Override
     public void configurarApuesta(int seleccion) {
+        if (seleccion == 0){
+            throw new IllegalArgumentException();
+        }
         if (seleccion == 1) {
             this.apostarJugador1();
         } else {

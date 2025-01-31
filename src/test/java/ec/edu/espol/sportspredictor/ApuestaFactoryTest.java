@@ -93,6 +93,7 @@ public class ApuestaFactoryTest {
         assertNotNull(apuesta, "La apuesta no debería ser null");
         assertTrue(apuesta instanceof StrategyTennis, 
             "La apuesta debería ser una instancia de StrategyTennis");
+         System.out.println("La apuesta creada no es nula");
     }
     
     @Test
